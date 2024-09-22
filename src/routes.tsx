@@ -1,14 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from '@/pages/Home';
-import About from '@/pages/About';
+import { Layout } from '@/components';
+import Dashboard from '@/pages/Dashboard';
+import History from '@/pages/History';
+import ChartsDefinitions from '@/pages/ChartsDefinitions';
+import ChartsData from '@/pages/ChartsData';
 import NotFound from '@/pages/NotFound';
 
-export default function AppRoutes() {
+const AppRoutes = () => {
 	return (
 		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="/about" element={<About />} />
-			<Route path="*" element={<NotFound />} />
+			<Route path="/" element={<Layout />}>
+				<Route index element={<Dashboard />} />
+				<Route path="history" element={<History />} />
+				<Route path="chartsdefinitions" element={<ChartsDefinitions />} />
+				<Route path="chartsdata" element={<ChartsData />} />
+				<Route path="*" element={<NotFound />} />
+			</Route>
 		</Routes>
 	);
-}
+};
+
+export default AppRoutes;
